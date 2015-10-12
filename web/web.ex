@@ -19,6 +19,9 @@ defmodule Rumbl.Web do
   def model do
     quote do
       use Ecto.Model
+
+      import Ecto.Changeset
+      import Ecto.Query, only: [from: 1, from: 2]
     end
   end
 
