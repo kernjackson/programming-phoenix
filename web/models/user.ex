@@ -10,4 +10,11 @@ defmodule Rumbl.User do
 
     timestamps
   end
+
+  # ecto/listings/rumbl/web/models/user.change1.ex
+  def changeset(model, params \\ :empty) do
+    model
+    |> cast(params, ~w(name username), [])
+    |> validate_length(:username, min: 1, max: 20)
+  end
 end
