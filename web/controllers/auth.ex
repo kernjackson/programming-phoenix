@@ -37,4 +37,19 @@ defmodule Rumbl.Auth do
        {:error, :not_found, conn}
    end
  end
+
+import Phoenix.Controller
+alias Rumbl.Router.Helpers
+
+ defp authenticate(conn, _opts) do
+   if conn.assigns.current_user do
+     conn
+   else
+     conn
+     |> put_flash(:error, "You must be logged in to acces that page")
+     |> redirect(to: page_path(conn, :index))
+     |> halt()
+   end
+ end
+
 end
